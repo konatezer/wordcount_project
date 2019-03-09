@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>Word count</title>
+  </head>
+
+  <body id="home" class="scrollspy">
+
+ <!-- NAV for MENU -->  
+ <div class="navbar-fixed">
+        <nav class="teal">
+            <div class="container">
+                <div class="nav-wrapper" >
+                    <a href="{% url 'home' %}" class="brand-logo">WordCount</a>
+                    <a href="#" class="sidenav-trigger" data-target="mobile-nav">
+                        <i class="material-icons">menu</i>
+                    </a>
+                    <ul class="right hide-on-med-and-down">
+                        <li>
+                            <a href="{% url 'home' %}">Re-Count</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'about' %}">About</a>
+                        </li>                       
+                    </ul>
+
+                    <!-- mobile nav -->
+
+                    <ul class="sidenav grey lighten-3" id="mobile-nav">
+                            <li>
+                                <a href="{% url 'home' %}">Re-Count</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'about' %}">About</a>
+                            </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+    </div>   
+ 
+
+
+
+
+
+    <!-- Section: Icon Boxes-->
+
+    <scetion class="section section-icon grey lighten-4 center">
+        <div class="container">
+            <h1>The are {{ count }} Words in  your text </h1>
+            <strong>Your text:</strong>
+            {{ fulltext }}
+
+            <h1>Word count</h1>
+            
+            {% for word, counttotal in sortedword %}
+            
+                <strong>{{ word }}: </strong>
+                {{ counttotal }} <br>
+            
+            {% endfor%}
+           
+        </div> 
+    </scetion>
+
+
+
+     <!-- Section: footer -->
+
+     <footer class="section teal darken-2 white-text center">
+         <p class="flow-text"> Travel &copy; 2019</p>
+     </footer>
+
+
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    
+    <script>
+        // SideNav
+        $(document).ready(function(){
+            // materailize mobile nav form side
+            $('.sidenav').sidenav();
+
+            // materailize image slider
+            $('.slider').slider({
+                indicators: false,
+                interval:6000
+
+            });
+
+            // materailize auto complete
+            $('input.autocomplete').autocomplete({
+            data: {
+                "Bora bora": null,
+                "Bamako": null,
+                "Paris": null,
+                "New york": null,
+                "Bobo": null,
+                "Monaco": null,
+            },
+            });
+
+            // materailize Boxed
+            $('.materialboxed').materialbox();
+
+            // materailize scrollspy one page
+            $('.scrollspy').scrollSpy();
+
+
+        });
+    </script>
+
+  </body>
+</html>
